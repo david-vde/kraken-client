@@ -3,6 +3,7 @@
 namespace DVE\KrakenClient;
 
 use DVE\KrakenClient\Logger\Logger;
+use DVE\KrakenClient\Model\Request\PrivateAddOrderRequestModel;
 use DVE\KrakenClient\Model\Request\PublicDepthRequestModel;
 use DVE\KrakenClient\Model\Request\PublicTimeRequestModel;
 use Payward\KrakenAPI;
@@ -142,9 +143,12 @@ class KrakenClient
         throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
     }
 
+    /**
+     * @return PrivateAddOrderRequestModel
+     */
     public function privateAddOrder()
     {
-        throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
+        return new PrivateAddOrderRequestModel($this->krakenAPI, $this->logger);
     }
 
     public function privateCancelOrder()
