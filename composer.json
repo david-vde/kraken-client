@@ -1,9 +1,10 @@
 {
   "name": "dve/kraken-client",
   "require": {
-    "payward/kraken-api-client": "dev-master"
+    "payward/kraken-api-client": "dev-master",
+    "shudrum/array-finder": "^1.1"
   },
   "autoload": {
-    "psr-0": { "DVE\\KrakenClient": "src/" }
+    "psr-4": { "DVE\\KrakenClient\\": "src/" }
   }
 }
