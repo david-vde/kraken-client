@@ -4,34 +4,57 @@ namespace DVE\KrakenClient\Model\Response;
 
 use Shudrum\Component\ArrayFinder\ArrayFinder;
 
-class PublicTimeResponseModel extends ResponseModel
+class PublicDepthResponseModel extends ResponseModel
 {
-    private $unixtime = 0;
-    private $rfc1123 = '';
+    private $asks = [];
+    private $bids = [];
 
     /**
-     * @return int
+     * @return PublicDepthAskResponseModel[]
      */
-    public function getUnixtime()
+    public function getAsks()
     {
-        return $this->unixtime;
+        return $this->asks;
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function getRfc1123()
+    public function getBids()
     {
-        return $this->rfc1123;
+        return $this->bids;
     }
 
     /**
      * @param ArrayFinder $results
+     * @param ArrayFinder $params
      */
-    protected function hydrate(ArrayFinder $results)
+    protected function hydrate(ArrayFinder $results, ArrayFinder $params)
     {
-        $this->unixtime = $results->get('result.unixtime');
-        $this->rfc1123 = $results->get('result.rfc1123');
+        $pair = $params->get('pair');
+
+        if(!$pair) {
+            throw new \InvalidArgumentException('Missing required param.');
+        }
+
+        $asks = $results->get('result.' . $pair . '.asks');
+        $bids = $results->get('result.' . $pair . '.bids');
+
+        $this->asks = $this->bids = [];
+
+        foreach($asks as $ask) {
+            $this->asks[] = new PublicDepthAskResponseModel(
+                new ArrayFinder($ask),
+                new ArrayFinder([])
+            );
+        }
+
+        foreach($bids as $bid) {
+            $this->bids[] = new PublicDepthBidResponseModel(
+                new ArrayFinder($bid),
+                new ArrayFinder([])
+            );
+        }
     }
 
 }

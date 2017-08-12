@@ -2,10 +2,41 @@
 
 namespace DVE\KrakenClient\Model\Request;
 
-use DVE\KrakenClient\Model\Response\PublicTimeResponseModel;
+use DVE\KrakenClient\Model\Response\PublicDepthResponseModel;
+use Shudrum\Component\ArrayFinder\ArrayFinder;
 
 class PublicDepthRequestModel extends RequestModel
 {
+    /**
+     * @var string
+     */
+    private $pair;
+
+    /**
+     * @var int
+     */
+    private $count;
+
+    /**
+     * @param string $pair
+     * @return PublicDepthRequestModel
+     */
+    public function setPair($pair)
+    {
+        $this->pair = (string)$pair;
+        return $this;
+    }
+
+    /**
+     * @param int $count
+     * @return PublicDepthRequestModel
+     */
+    public function setCount($count)
+    {
+        $this->count = (int)$count;
+        return $this;
+    }
+
     /**
      * @return string
      */

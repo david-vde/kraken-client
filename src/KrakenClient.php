@@ -3,6 +3,7 @@
 namespace DVE\KrakenClient;
 
 use DVE\KrakenClient\Logger\Logger;
+use DVE\KrakenClient\Model\Request\PublicDepthRequestModel;
 use DVE\KrakenClient\Model\Request\PublicTimeRequestModel;
 use Payward\KrakenAPI;
 use Psr\Log\LoggerInterface;
@@ -51,6 +52,14 @@ class KrakenClient
     public function publicTime()
     {
         return new PublicTimeRequestModel($this->krakenAPI, $this->logger);
+    }
+
+    /**
+     * @return PublicDepthRequestModel
+     */
+    public function publicDepth()
+    {
+        return new PublicDepthRequestModel($this->krakenAPI, $this->logger);
     }
 
 }

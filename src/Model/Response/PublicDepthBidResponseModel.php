@@ -4,9 +4,12 @@ namespace DVE\KrakenClient\Model\Response;
 
 use Shudrum\Component\ArrayFinder\ArrayFinder;
 
-class PublicDepthAskResponseModel extends ResponseModel
+class PublicDepthBidResponseModel extends ResponseModel
 {
-    private $price = 0;
+    /**
+     * @var float
+     */
+    private $price = 0.0;
 
     /**
      * @var float
@@ -18,6 +21,29 @@ class PublicDepthAskResponseModel extends ResponseModel
      */
     private $timestamp;
 
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
 
     /**
      * @param ArrayFinder $results
@@ -25,8 +51,8 @@ class PublicDepthAskResponseModel extends ResponseModel
      */
     protected function hydrate(ArrayFinder $results, ArrayFinder $params)
     {
-        $this->price = $results->get('0');
-        $this->volume = $results->get('1');
+        $this->price = (float)$results->get('0');
+        $this->volume = (float)$results->get('1');
         $this->timestamp = new \DateTime(date('c', $results->get('2')));
     }
 
