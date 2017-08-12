@@ -4,6 +4,7 @@ namespace DVE\KrakenClient\Model\Request;
 
 use Payward\KrakenAPI;
 use Payward\KrakenAPIException;
+use Psr\Log\LoggerInterface;
 use Shudrum\Component\ArrayFinder\ArrayFinder;
 
 abstract class RequestModel
@@ -14,12 +15,19 @@ abstract class RequestModel
     protected $krakenAPI;
 
     /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
      * RequestModel constructor.
      * @param KrakenAPI $krakenAPI
+     * @param LoggerInterface $logger
      */
-    public function __construct(KrakenAPI $krakenAPI)
+    public function __construct(KrakenAPI $krakenAPI, LoggerInterface $logger)
     {
         $this->krakenAPI = $krakenAPI;
+        $this->logger = $logger;
     }
 
     /**
@@ -42,17 +50,26 @@ abstract class RequestModel
 
         for($retriesCounter = 0; $retriesCounter < $nbRetries; $retriesCounter++) {
             try {
+                $this->logger->info('Calling end-point "'.$this->getEndPointName().'"...');
+
                 if($retriesCounter > 0) {
-                    echo "- Retrying ($retriesCounter)...\n";
+                   $this->logger->info('Retrying ($retriesCounter)...');
                 }
 
                 $apiResults = $this->krakenAPI->QueryPublic(
                     $this->getEndPointName(),
                     $this->buildRequest()
                 );
+
+                $this->logger->info('Succeeded!');
+
                 break;
             } catch(KrakenAPIException $krakenAPIException) {
-                echo "- Kraken returned an error.\n";
+                $this->logger->error('Kraken returned an error: ' . $krakenAPIException->getMessage());
+
+                if($retriesCounter === $nbRetries) {
+                    $this->logger->critical('Unable to satisfy your request.');
+                }
             }
         }
 
