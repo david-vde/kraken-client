@@ -9,14 +9,17 @@ abstract class ResponseModel
     /**
      * Model constructor.
      * @param ArrayFinder $results
+     * @param ArrayFinder $params
      */
-    public function __construct(ArrayFinder $results)
+    public function __construct(ArrayFinder $results, ArrayFinder $params)
     {
-        $this->hydrate($results);
+        $this->hydrate($results, $params);
     }
 
     /**
      * @param ArrayFinder $results
+     * @param ArrayFinder $params
+     * @return
      */
-    abstract protected function hydrate(ArrayFinder $results);
+    abstract protected function hydrate(ArrayFinder $results, ArrayFinder $params);
 }

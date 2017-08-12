@@ -27,9 +27,8 @@ class PublicTimeResponseModel extends ResponseModel
 
     /**
      * @param ArrayFinder $results
-     * @param ArrayFinder $params
      */
-    protected function hydrate(ArrayFinder $results, ArrayFinder $params)
+    protected function hydrate(ArrayFinder $results)
     {
         $this->unixtime = $results->get('result.unixtime');
         $this->rfc1123 = $results->get('result.rfc1123');
