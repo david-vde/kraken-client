@@ -2,6 +2,7 @@
 
 namespace DVE\KrakenClient\Model\Request;
 
+use DVE\KrakenClient\Constant\ApiMethodAccessType;
 use Payward\KrakenAPI;
 use Payward\KrakenAPIException;
 use Psr\Log\LoggerInterface;
@@ -41,9 +42,10 @@ abstract class RequestModel
     abstract protected function buildRequest();
 
     /**
+     * @param string $apiMethodAccessType
      * @return ArrayFinder
      */
-    protected function callApi()
+    protected function callApi($apiMethodAccessType = ApiMethodAccessType::PUBLIC_METHOD)
     {
         $apiResults = [];
         $nbRetries = 5;
@@ -56,7 +58,9 @@ abstract class RequestModel
                    $this->logger->info('Retrying ($retriesCounter)...');
                 }
 
-                $apiResults = $this->krakenAPI->QueryPublic(
+                $method = $apiMethodAccessType === ApiMethodAccessType::PRIVATE_METHOD ? 'QueryPrivate' : 'QueryPublic';
+
+                $apiResults = $this->krakenAPI->$method(
                     $this->getEndPointName(),
                     $this->buildRequest()
                 );
