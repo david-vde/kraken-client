@@ -1,0 +1,9 @@
+{
+  "name": "dve/kraken-client",
+  "require": {
+    "payward/kraken-api-client": "dev-master"
+  },
+  "autoload": {
+    "psr-0": { "DVE\\KrakenClient": "src/" }
+  }
+}
