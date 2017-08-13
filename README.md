@@ -15,7 +15,7 @@ An easy to use kraken client
 - [ ] public function privateTradeBalance()
 - [ ] public function privateOpenOrders()
 - [ ] public function privateClosedOrders()
-- [ ] public function privateQueryOrders()
+- [x] public function privateQueryOrders()
 - [ ] public function privateTradesHistory()
 - [ ] public function privateQueryTrades()
 - [ ] public function privateOpenPositions()
