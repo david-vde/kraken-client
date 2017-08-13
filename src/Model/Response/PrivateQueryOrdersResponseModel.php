@@ -27,16 +27,18 @@ class PrivateQueryOrdersResponseModel extends ResponseModel
     {
         $elements = $results->get('result');
 
-        foreach($elements as $txid => $element) {
-            $element['txid'] = $txid;
+        if(is_array($elements)) {
+            foreach($elements as $txid => $element) {
+                $element['txid'] = $txid;
 
-            $txElement = new PrivateQueryOrdersElementResponseModel(
-                new ArrayFinder($element),
-                new ArrayFinder([
-                    'txid'  =>  $txid
-                ])
-            );
-            $this->orders[$txid] = $txElement;
+                $txElement = new PrivateQueryOrdersElementResponseModel(
+                    new ArrayFinder($element),
+                    new ArrayFinder([
+                        'txid'  =>  $txid
+                    ])
+                );
+                $this->orders[$txid] = $txElement;
+            }
         }
     }
 }

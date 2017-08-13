@@ -19,9 +19,9 @@ class PrivateQueryOrdersRequestModel extends RequestModel
     private $userref;
 
     /**
-     * @var string
+     * @var string[]
      */
-    private $txid;
+    private $txid = [];
 
     /**
      * @param \string[] $trades
@@ -44,10 +44,10 @@ class PrivateQueryOrdersRequestModel extends RequestModel
     }
 
     /**
-     * @param string $txid
-     * @return PrivateCancelOrderRequestModel
+     * @param string[] $txid
+     * @return PrivateQueryOrdersRequestModel
      */
-    public function setTxid($txid)
+    public function setTxid(array $txid)
     {
         $this->txid = $txid;
         return $this;
@@ -67,7 +67,7 @@ class PrivateQueryOrdersRequestModel extends RequestModel
     public function buildRequest()
     {
         $requestData = [
-            'txid'  =>  $this->txid
+            'txid'  =>  implode(',', $this->txid)
         ];
 
         if($this->trades) {

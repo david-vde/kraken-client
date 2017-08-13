@@ -9,6 +9,11 @@ class PrivateQueryOrdersElementResponseModel extends ResponseModel
     /**
      * @var string
      */
+    private $txid;
+
+    /**
+     * @var string
+     */
     private $refid;
 
     /**
@@ -90,6 +95,14 @@ class PrivateQueryOrdersElementResponseModel extends ResponseModel
      * @var string[]
      */
     private $trades;
+
+    /**
+     * @return string
+     */
+    public function getTxid()
+    {
+        return $this->txid;
+    }
 
     /**
      * @return string
@@ -237,6 +250,7 @@ class PrivateQueryOrdersElementResponseModel extends ResponseModel
         $starttm = (int)$results->get('starttm');
         $expiretm = (int)$results->get('expiretm');
 
+        $this->txid = $params->get('txid');
         $this->refid = (string)$results->get('refid');
         $this->userref = (int)$results->get('userref');
         $this->status = (string)$results->get('status');
