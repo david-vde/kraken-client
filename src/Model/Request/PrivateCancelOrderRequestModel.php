@@ -47,7 +47,7 @@ class PrivateCancelOrderRequestModel extends RequestModel
     {
         return new PrivateCancelOrderResponseModel(
             $this->callApi(ApiMethodAccessType::PRIVATE_METHOD),
-            new ArrayFinder()
+            new ArrayFinder([])
         );
     }
 }
