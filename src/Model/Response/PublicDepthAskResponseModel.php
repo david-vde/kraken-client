@@ -22,7 +22,7 @@ class PublicDepthAskResponseModel extends ResponseModel
     private $timestamp;
 
     /**
-     * @return int
+     * @return float
      */
     public function getPrice()
     {
