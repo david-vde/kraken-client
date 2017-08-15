@@ -18,7 +18,7 @@ class PublicDepthResponseModel extends ResponseModel
     }
 
     /**
-     * @return array
+     * @return PublicDepthBidResponseModel[]
      */
     public function getBids()
     {
