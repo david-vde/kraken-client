@@ -65,14 +65,20 @@ abstract class RequestModel
                     $this->buildRequest()
                 );
 
-                $this->logger->info('Succeeded!');
+                if(array_key_exists('error', $apiResults) && count($apiResults['error']) > 0) {
+                    $errors = implode(', ', $apiResults['error']);
+                    throw new KrakenAPIException($errors);
+                } else {
+                    $this->logger->info('Succeeded!');
+                }
 
                 break;
             } catch(KrakenAPIException $krakenAPIException) {
-                $this->logger->error('Kraken returned an error: ' . $krakenAPIException->getMessage());
+                $this->logger->error('Kraken returned one or more errors: ' . $krakenAPIException->getMessage());
 
                 if($retriesCounter === $nbRetries) {
-                    $this->logger->critical('Unable to satisfy your request.');
+                    $this->logger->critical('Unable to satisfy your request after '.$nbRetries.' retries.');
+                    return new ArrayFinder($apiResults);
                 }
             }
         }
