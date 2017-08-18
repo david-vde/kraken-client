@@ -4,6 +4,7 @@ namespace DVE\KrakenClient;
 
 use DVE\KrakenClient\Logger\Logger;
 use DVE\KrakenClient\Model\Request\PrivateAddOrderRequestModel;
+use DVE\KrakenClient\Model\Request\PrivateBalanceRequestModel;
 use DVE\KrakenClient\Model\Request\PrivateCancelOrderRequestModel;
 use DVE\KrakenClient\Model\Request\PrivateQueryOrdersRequestModel;
 use DVE\KrakenClient\Model\Request\PublicDepthRequestModel;
@@ -95,9 +96,12 @@ class KrakenClient
         throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
     }
 
+    /**
+     * @return PrivateBalanceRequestModel
+     */
     public function privateBalance()
     {
-        throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
+        return new PrivateBalanceRequestModel($this->krakenAPI, $this->logger);
     }
 
     public function privateTradeBalance()

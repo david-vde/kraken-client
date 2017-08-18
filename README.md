@@ -11,7 +11,7 @@ An easy to use kraken client
 - [x] public function publicDepth()
 - [ ] public function publicTrades()
 - [ ] public function publicSpread()
-- [ ] public function privateBalance()
+- [x] public function privateBalance()
 - [ ] public function privateTradeBalance()
 - [ ] public function privateOpenOrders()
 - [ ] public function privateClosedOrders()
