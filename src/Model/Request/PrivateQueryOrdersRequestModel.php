@@ -9,7 +9,7 @@ use Shudrum\Component\ArrayFinder\ArrayFinder;
 class PrivateQueryOrdersRequestModel extends RequestModel
 {
     /**
-     * @var string[]
+     * @var bool
      */
     private $trades;
 
@@ -24,12 +24,12 @@ class PrivateQueryOrdersRequestModel extends RequestModel
     private $txid = [];
 
     /**
-     * @param \string[] $trades
+     * @param bool $trades
      * @return PrivateQueryOrdersRequestModel
      */
     public function setTrades($trades)
     {
-        $this->trades = $trades;
+        $this->trades = (bool)$trades;
         return $this;
     }
 
@@ -71,7 +71,7 @@ class PrivateQueryOrdersRequestModel extends RequestModel
         ];
 
         if($this->trades) {
-            $requestData['tardes'] = true;
+            $requestData['trades'] = $this->trades;
         }
 
         if($this->userref) {
