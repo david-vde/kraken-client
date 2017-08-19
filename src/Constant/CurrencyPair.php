@@ -64,10 +64,10 @@ class CurrencyPair
     const XZECZUSD = 'XZECZUSD';
 
     private static $quoteCurrenciesByPair = [
-        self::LTCEUR   => 'EUR',
-        self::BTCEUR   => 'EUR',
-        self::XBTEUR   => 'EUR',
-        self::ETHEUR   => 'EUR',
+        self::LTCEUR   => 'ZEUR',
+        self::BTCEUR   => 'ZEUR',
+        self::XBTEUR   => 'ZEUR',
+        self::ETHEUR   => 'ZEUR',
         self::BCHEUR   => 'EUR',
         self::DASHEUR  => 'EUR',
         self::DASHUSD  => 'USD',
