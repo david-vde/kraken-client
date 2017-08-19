@@ -6,6 +6,7 @@ use DVE\KrakenClient\Logger\Logger;
 use DVE\KrakenClient\Model\Request\PrivateAddOrderRequestModel;
 use DVE\KrakenClient\Model\Request\PrivateBalanceRequestModel;
 use DVE\KrakenClient\Model\Request\PrivateCancelOrderRequestModel;
+use DVE\KrakenClient\Model\Request\PrivateOpenOrdersRequestModel;
 use DVE\KrakenClient\Model\Request\PrivateQueryOrdersRequestModel;
 use DVE\KrakenClient\Model\Request\PublicDepthRequestModel;
 use DVE\KrakenClient\Model\Request\PublicTimeRequestModel;
@@ -109,9 +110,12 @@ class KrakenClient
         throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
     }
 
+    /**
+     * @return PrivateOpenOrdersRequestModel
+     */
     public function privateOpenOrders()
     {
-        throw new \BadMethodCallException(__METHOD__ . ' not yet implemented');
+        return new PrivateOpenOrdersRequestModel($this->krakenAPI, $this->logger);
     }
 
     public function privateClosedOrders()
