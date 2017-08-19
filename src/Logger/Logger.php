@@ -21,7 +21,7 @@ class Logger implements LoggerInterface
      */
     public function alert($message, array $context = array())
     {
-        $this->log('alert', $message, $context);
+        $this->log('alert', "\033[1;31m" . $message . "\033[0m", $context);
     }
 
     /**
@@ -30,7 +30,7 @@ class Logger implements LoggerInterface
      */
     public function critical($message, array $context = array())
     {
-        $this->log('critical', $message, $context);
+        $this->log('critical', "\033[0;31m" . $message . "\033[0m", $context);
     }
 
     /**
@@ -39,7 +39,7 @@ class Logger implements LoggerInterface
      */
     public function error($message, array $context = array())
     {
-        $this->log('error', $message, $context);
+        $this->log('error', "\033[0;31m" . $message . "\033[0m", $context);
     }
 
     /**
@@ -48,7 +48,7 @@ class Logger implements LoggerInterface
      */
     public function warning($message, array $context = array())
     {
-        $this->log('warning', $message, $context);
+        $this->log('warning', "\033[1;31m" . $message . "\033[0m", $context);
     }
 
     /**
@@ -57,7 +57,7 @@ class Logger implements LoggerInterface
      */
     public function notice($message, array $context = array())
     {
-        $this->log('notice', $message, $context);
+        $this->log('notice', "\033[1;32m" . $message . "\033[0m", $context);
     }
 
     /**
