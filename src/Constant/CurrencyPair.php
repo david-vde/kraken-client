@@ -4,6 +4,10 @@ namespace DVE\KrakenClient\Constant;
 
 class CurrencyPair
 {
+    const LTCEUR   = 'LTCEUR';
+    const BTCEUR   = 'BTCEUR';
+    const XBTEUR   = 'XBTEUR';
+    const ETHEUR   = 'ETHEUR';
     const BCHEUR   = 'BCHEUR';
     const DASHEUR  = 'DASHEUR';
     const DASHUSD  = 'DASHUSD';
@@ -60,6 +64,10 @@ class CurrencyPair
     const XZECZUSD = 'XZECZUSD';
 
     private static $quoteCurrenciesByPair = [
+        self::LTCEUR   => 'EUR',
+        self::BTCEUR   => 'EUR',
+        self::XBTEUR   => 'EUR',
+        self::ETHEUR   => 'EUR',
         self::BCHEUR   => 'EUR',
         self::DASHEUR  => 'EUR',
         self::DASHUSD  => 'USD',
@@ -117,6 +125,10 @@ class CurrencyPair
     ];
 
     private static $baseCurrenciesByPair = [
+        self::LTCEUR   => 'XLTC',
+        self::BTCEUR   => 'XXBT',
+        self::XBTEUR   => 'XXBT',
+        self::ETHEUR   => 'XETH',
         self::BCHEUR   => 'BCH',
         self::DASHEUR  => 'DASH',
         self::DASHUSD  => 'DASH',
