@@ -17,7 +17,7 @@ class PrivateAddOrderResponseModel extends ResponseModel
     private $txid;
 
     /**
-     * @return array
+     * @return PrivateAddOrderDescrResponseModel
      */
     public function getDescr()
     {
