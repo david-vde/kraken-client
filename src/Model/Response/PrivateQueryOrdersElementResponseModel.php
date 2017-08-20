@@ -272,6 +272,6 @@ class PrivateQueryOrdersElementResponseModel extends ResponseModel
         $this->limitprice = (float)$results->get('limitprice');
         $this->misc = explode(',', $results->get('misc'));
         $this->oflags = explode(',', $results->get('oflags'));
-        $this->trades = explode(',', $results->get('trades'));
+        $this->trades = $results->get('trades');
    }
 }
