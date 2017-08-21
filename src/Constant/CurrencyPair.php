@@ -8,6 +8,7 @@ class CurrencyPair
     const BTCEUR   = 'BTCEUR';
     const XBTEUR   = 'XBTEUR';
     const ETHEUR   = 'ETHEUR';
+    const XMREUR   = 'XMREUR';
     const BCHEUR   = 'BCHEUR';
     const DASHEUR  = 'DASHEUR';
     const DASHUSD  = 'DASHUSD';
@@ -68,6 +69,7 @@ class CurrencyPair
         self::BTCEUR   => 'ZEUR',
         self::XBTEUR   => 'ZEUR',
         self::ETHEUR   => 'ZEUR',
+        self::XMREUR   => 'ZEUR',
         self::BCHEUR   => 'EUR',
         self::DASHEUR  => 'EUR',
         self::DASHUSD  => 'USD',
@@ -129,6 +131,7 @@ class CurrencyPair
         self::BTCEUR   => 'XXBT',
         self::XBTEUR   => 'XXBT',
         self::ETHEUR   => 'XETH',
+        self::XMREUR   => 'XXMR',
         self::BCHEUR   => 'BCH',
         self::DASHEUR  => 'DASH',
         self::DASHUSD  => 'DASH',
