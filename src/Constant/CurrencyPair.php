@@ -21,6 +21,7 @@ class CurrencyPair
     const GNOEUR   = 'GNOEUR';
     const GNOUSD   = 'GNOUSD';
     const GNOXBT   = 'GNOXBT';
+    const ZECEUR   = 'ZECEUR';
     const USDTZUSD = 'USDTZUSD';
     const XETCXETH = 'XETCXETH';
     const XETCXXBT = 'XETCXXBT';
@@ -82,6 +83,7 @@ class CurrencyPair
         self::GNOEUR   => 'EUR',
         self::GNOUSD   => 'USD',
         self::GNOXBT   => 'XBT',
+        self::ZECEUR   => 'EUR',
         self::USDTZUSD => 'ZUSD',
         self::XETCXETH => 'XETH',
         self::XETCXXBT => 'XXBT',
@@ -144,6 +146,7 @@ class CurrencyPair
         self::GNOEUR   => 'GNO',
         self::GNOUSD   => 'GNO',
         self::GNOXBT   => 'GNO',
+        self::ZECEUR   => 'ZEC',
         self::USDTZUSD => 'USDT',
         self::XETCXETH => 'XETC',
         self::XETCXXBT => 'XETC',
