@@ -153,7 +153,7 @@ class PrivateQueryOrdersElementResponseModel extends ResponseModel
     }
 
     /**
-     * @return PrivateAddOrderDescrResponseModel
+     * @return PrivateQueryOrdersElementDescrResponseModel
      */
     public function getDescr()
     {
