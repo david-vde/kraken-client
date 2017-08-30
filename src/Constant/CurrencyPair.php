@@ -159,20 +159,81 @@ class CurrencyPair
         self::XXBTZUSD => 'XXBT',
         self::XXDGXXBT => 'XXDG',
         self::XXLMXXBT => 'XXLM',
-        self::XXLMZEUR => 'XXLM',
-        self::XXLMZUSD => 'XXLM',
         self::XXMRXXBT => 'XXMR',
         self::XXMRZEUR => 'XXMR',
         self::XXMRZUSD => 'XXMR',
         self::XXRPXXBT => 'XXRP',
-        self::XXRPZCAD => 'XXRP',
         self::XXRPZEUR => 'XXRP',
-        self::XXRPZJPY => 'XXRP',
         self::XXRPZUSD => 'XXRP',
         self::XZECXXBT => 'XZEC',
         self::XZECZEUR => 'XZEC',
         self::XZECZUSD => 'XZEC'
     ];
+
+    private static $pricePrecisionByPair = [
+        self::LTCEUR   =>   4,
+        self::BTCEUR   =>   2,
+        self::XBTEUR   =>   2,
+        self::ETHEUR   =>   3,
+        self::XMREUR   =>   4,
+        self::BCHEUR   =>   3,
+        self::DASHEUR  =>   3,
+        self::DASHUSD  =>   3,
+        self::DASHXBT  =>   6,
+        self::EOSETH   =>   6,
+        self::EOSXBT   =>   6,
+        self::GNOETH   =>   6,
+        self::GNOXBT   =>   6,
+        self::ZECEUR   =>   3,
+        self::ZECUSD   =>   3,
+        self::USDTZUSD =>   4,
+        self::XETCXETH =>   6,
+        self::XETCXXBT =>   6,
+        self::XETCZEUR =>   4,
+        self::XETCXUSD =>   4,
+        self::XETHXXBT =>   6,
+        self::XETHZCAD =>   3,
+        self::XETHZEUR =>   3,
+        self::XETHZGBP =>   3,
+        self::XETHZJPY =>   1,
+        self::XETHZUSD =>   3,
+        self::XICNXETH =>   6,
+        self::XICNXXBT =>   6,
+        self::XLTCXXBT =>   6,
+        self::XLTCZEUR =>   4,
+        self::XLTCZUSD =>   4,
+        self::XMLNXETH =>   6,
+        self::XMLNXXBT =>   6,
+        self::XREPXETH =>   6,
+        self::XREPXXBT =>   6,
+        self::XREPZEUR =>   6,
+        self::XREPZUSD =>   6,
+        self::XXBTZCAD =>   2,
+        self::XXBTZEUR =>   2,
+        self::XXBTZGBP =>   2,
+        self::XXBTZJPY =>   0,
+        self::XXBTZUSD =>   2,
+        self::XXDGXXBT =>   8,
+        self::XXLMXXBT =>   7,
+        self::XXMRXXBT =>   6,
+        self::XXMRZEUR =>   4,
+        self::XXMRZUSD =>   4,
+        self::XXRPXXBT =>   6,
+        self::XXRPZEUR =>   6,
+        self::XXRPZUSD =>   6,
+        self::XZECXXBT =>   6,
+        self::XZECZEUR =>   3,
+        self::XZECZUSD =>   3
+    ];
+
+    public function getPricePrecision($pair)
+    {
+        if(array_key_exists($pair, self::$pricePrecisionByPair)) {
+            return self::$pricePrecisionByPair[$pair];
+        }
+        throw new \InvalidArgumentException('Pair "' . $pair . '" is not supported');
+    }
+
 
     public static function getBaseCurrency($pair)
     {

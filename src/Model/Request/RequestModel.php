@@ -3,6 +3,7 @@
 namespace DVE\KrakenClient\Model\Request;
 
 use DVE\KrakenClient\Constant\ApiMethodAccessType;
+use DVE\KrakenClient\Constant\CurrencyPair;
 use Payward\KrakenAPI;
 use Payward\KrakenAPIException;
 use Psr\Log\LoggerInterface;
@@ -29,6 +30,20 @@ abstract class RequestModel
     {
         $this->krakenAPI = $krakenAPI;
         $this->logger = $logger;
+    }
+
+    /**
+     * @param string $pair
+     * @param float $price
+     * @return float
+     */
+    public function roundPrice($pair, $price)
+    {
+        if($this->pair) {
+            $price = round($price, CurrencyPair::getPricePrecision($pair));
+        }
+
+        return $price;
     }
 
     /**

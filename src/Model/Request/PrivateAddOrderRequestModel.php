@@ -3,6 +3,7 @@
 namespace DVE\KrakenClient\Model\Request;
 
 use DVE\KrakenClient\Constant\ApiMethodAccessType;
+use DVE\KrakenClient\Constant\CurrencyPair;
 use DVE\KrakenClient\Constant\OrderType;
 use DVE\KrakenClient\Model\Response\PrivateAddOrderResponseModel;
 use Shudrum\Component\ArrayFinder\ArrayFinder;
@@ -297,11 +298,11 @@ class PrivateAddOrderRequestModel extends RequestModel
 
         // Conditional mandatory
         if(OrderType::isPriceRequired($this->ordertype)) {
-            $requestData['price'] = $this->price;
+            $requestData['price'] = $this->roundPrice($this->pair, $this->price);
         }
 
         if(OrderType::isPrice2Required($this->ordertype)) {
-            $requestData['price2'] = $this->price2;
+            $requestData['price2'] = $this->roundPrice($this->pair, $this->price2);
         }
 
         // Optionals
@@ -335,11 +336,11 @@ class PrivateAddOrderRequestModel extends RequestModel
             $requestData['close']['orderype'] = $this->closeOrderType;
 
             if(OrderType::isPriceRequired($this->closeOrderType)) {
-                $requestData['close']['price'] = $this->closePrice;
+                $requestData['close']['price'] = $this->roundPrice($this->pair, $this->closePrice);
             }
 
             if(OrderType::isPric2Required($this->closeOrderType)) {
-                $requestData['close']['price2'] = $this->closePrice2;
+                $requestData['close']['price2'] = $this->roundPrice($this->pair, $this->closePrice2);
             }
         }
 
@@ -368,4 +369,6 @@ class PrivateAddOrderRequestModel extends RequestModel
             return (int)$rawValue;
         }
     }
+
+
 }
