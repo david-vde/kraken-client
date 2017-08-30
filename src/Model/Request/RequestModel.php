@@ -63,7 +63,7 @@ abstract class RequestModel
     protected function callApi($apiMethodAccessType = ApiMethodAccessType::PUBLIC_METHOD)
     {
         $apiResults = [];
-        $nbRetries = 5;
+        $nbRetries = 1;
 
         for($retriesCounter = 0; $retriesCounter < $nbRetries; $retriesCounter++) {
             try {
