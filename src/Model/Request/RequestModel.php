@@ -39,7 +39,7 @@ abstract class RequestModel
      */
     public function roundPrice($pair, $price)
     {
-        if($this->pair) {
+        if($pair) {
             $price = round($price, CurrencyPair::getPricePrecision($pair));
         }
 
