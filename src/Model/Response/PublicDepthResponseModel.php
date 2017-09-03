@@ -42,18 +42,22 @@ class PublicDepthResponseModel extends ResponseModel
 
         $this->asks = $this->bids = [];
 
-        foreach($asks as $ask) {
-            $this->asks[] = new PublicDepthAskResponseModel(
-                new ArrayFinder($ask),
-                new ArrayFinder([])
-            );
+        if(is_array($asks)) {
+            foreach($asks as $ask) {
+                $this->asks[] = new PublicDepthAskResponseModel(
+                    new ArrayFinder($ask),
+                    new ArrayFinder([])
+                );
+            }
         }
 
-        foreach($bids as $bid) {
-            $this->bids[] = new PublicDepthBidResponseModel(
-                new ArrayFinder($bid),
-                new ArrayFinder([])
-            );
+        if(is_array($bids)) {
+            foreach($bids as $bid) {
+                $this->bids[] = new PublicDepthBidResponseModel(
+                    new ArrayFinder($bid),
+                    new ArrayFinder([])
+                );
+            }
         }
     }
 
